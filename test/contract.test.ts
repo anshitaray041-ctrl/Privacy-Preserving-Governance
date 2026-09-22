@@ -33,7 +33,19 @@ describe('StellarRise Governance Compact Smart Contract Tests', () => {
     simulator.registerEligibleVoter(proposalId, bobWitness.getCommitment());
   });
 
-  it('Test 1: Eligible voter can cast private vote and update aggregate tally', () => {
+  it('Test 1: Proposal creation works and initializes public ledger state', () => {
+    const proposal = simulator.getProposal(proposalId);
+    expect(proposal).toBeDefined();
+    expect(proposal?.status).toBe(ProposalStatus.Active);
+    expect(proposal?.yesCount).toBe(0);
+    expect(proposal?.noCount).toBe(0);
+    expect(proposal?.abstainCount).toBe(0);
+    expect(proposal?.totalVotesCast).toBe(0);
+    expect(proposal?.titleHash).toBeDefined();
+    expect(proposal?.voterEligibilityRoot).toBeDefined();
+  });
+
+  it('Test 2: Eligible voter can vote successfully (Valid witness & proof verification)', () => {
     // Alice casts private YES vote
     const voteResult = simulator.castPrivateVote(
       proposalId,
@@ -48,12 +60,12 @@ describe('StellarRise Governance Compact Smart Contract Tests', () => {
     expect(voteResult.proposal.totalVotesCast).toBe(1);
     expect(voteResult.receipt.verifiedOnLedger).toBe(true);
 
-    // Verify nullifier is recorded on ledger
+    // Verify nullifier is recorded in public ledger state
     const nullifier = aliceWitness.generateNullifier(proposalId);
     expect(simulator.isNullifierUsed(proposalId, nullifier)).toBe(true);
   });
 
-  it('Test 2: Ineligible voter cannot vote', () => {
+  it('Test 3: Ineligible voter cannot vote (Membership assertion failure)', () => {
     // Charlie is NOT registered in the proposal's eligibility list
     expect(() => {
       simulator.castPrivateVote(
@@ -69,7 +81,7 @@ describe('StellarRise Governance Compact Smart Contract Tests', () => {
     expect(proposal?.yesCount).toBe(0);
   });
 
-  it('Test 3: Same voter cannot vote twice (Double voting prevention via Nullifiers)', () => {
+  it('Test 4: Duplicate vote rejected (Nullifier replay prevention)', () => {
     // Alice votes once (VoteOption.Yes)
     simulator.castPrivateVote(proposalId, aliceWitness, VoteOption.Yes);
 
@@ -85,23 +97,11 @@ describe('StellarRise Governance Compact Smart Contract Tests', () => {
     expect(proposal?.noCount).toBe(0);
   });
 
-  it('Test 4: Multiple eligible voters can cast conflicting private votes anonymously', () => {
-    // Alice votes YES
-    simulator.castPrivateVote(proposalId, aliceWitness, VoteOption.Yes);
-    // Bob votes NO
-    simulator.castPrivateVote(proposalId, bobWitness, VoteOption.No);
-
-    const proposal = simulator.getProposal(proposalId);
-    expect(proposal?.yesCount).toBe(1);
-    expect(proposal?.noCount).toBe(1);
-    expect(proposal?.totalVotesCast).toBe(2);
-  });
-
-  it('Test 5: Closes proposal and enforces voting deadline', () => {
+  it('Test 5: Closed proposal rejects vote submissions', () => {
     const proposal = simulator.getProposal(proposalId)!;
     const pastDeadline = proposal.votingDeadline + 1000;
 
-    // Fast-forward past deadline and close proposal
+    // Close proposal
     const closeResult = simulator.closeProposal(proposalId, pastDeadline);
     expect(closeResult.proposal.status).toBe(ProposalStatus.Closed);
 
@@ -109,5 +109,36 @@ describe('StellarRise Governance Compact Smart Contract Tests', () => {
     expect(() => {
       simulator.castPrivateVote(proposalId, aliceWitness, VoteOption.Yes, pastDeadline);
     }).toThrow(/Proposal is not active/);
+  });
+
+  it('Test 6: Final tally is exact and publicly verifiable across all vote options', () => {
+    // Setup additional voter Dave
+    const daveWitness = new VoterWitness();
+    simulator.registerEligibleVoter(proposalId, daveWitness.getCommitment());
+
+    // Alice votes YES
+    simulator.castPrivateVote(proposalId, aliceWitness, VoteOption.Yes);
+    // Bob votes NO
+    simulator.castPrivateVote(proposalId, bobWitness, VoteOption.No);
+    // Dave votes ABSTAIN
+    simulator.castPrivateVote(proposalId, daveWitness, VoteOption.Abstain);
+
+    const proposal = simulator.getProposal(proposalId)!;
+    expect(proposal.yesCount).toBe(1);
+    expect(proposal.noCount).toBe(1);
+    expect(proposal.abstainCount).toBe(1);
+    expect(proposal.totalVotesCast).toBe(3);
+  });
+
+  it('Test 7: Rejects malformed proposal with invalid voting deadlines', () => {
+    expect(() => {
+      simulator.createProposal(
+        'Invalid Proposal',
+        'Invalid deadlines',
+        'mn_creator',
+        100000, // reg deadline
+        50000   // vote deadline BEFORE reg deadline
+      );
+    }).toThrow(/Voting deadline must be after registration deadline/);
   });
 });
