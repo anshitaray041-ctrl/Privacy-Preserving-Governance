@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ProposalMeta, VoteOption } from '../../contract/src/types';
-import { X, Shield, Key, Cpu, CheckCircle2, AlertTriangle, ArrowRight, Loader2 } from 'lucide-react';
+import { X, Shield, Key, Cpu, CheckCircle2, AlertTriangle, ArrowRight, Loader2, Database } from 'lucide-react';
 import { useGovernance } from '../context/GovernanceContext';
 import { useMidnight } from '../context/MidnightContext';
 
@@ -179,16 +179,16 @@ export const VotingModal: React.FC<VotingModalProps> = ({ proposal, onClose }) =
 
             {/* Stepper progress */}
             <div className="grid grid-cols-4 gap-2 text-[10px] text-slate-400 pt-4 border-t border-white/10 font-mono">
-              <div className={votingProgress.step === 'witness_extraction' ? 'text-purple-300 font-bold' : ''}>
+              <div className={votingProgress.step === 'witness_extraction' || votingProgress.step === 'loading_contract' || votingProgress.step === 'checking_eligibility' ? 'text-purple-300 font-bold' : ''}>
                 1. Witness
               </div>
               <div className={votingProgress.step === 'zk_proving' ? 'text-purple-300 font-bold' : ''}>
                 2. Compact ZKP
               </div>
-              <div className={votingProgress.step === 'nullifier_check' ? 'text-purple-300 font-bold' : ''}>
+              <div className={votingProgress.step === 'nullifier_derivation' ? 'text-purple-300 font-bold' : ''}>
                 3. Nullifier
               </div>
-              <div className={votingProgress.step === 'ledger_submission' ? 'text-purple-300 font-bold' : ''}>
+              <div className={votingProgress.step === 'submitting_tx' || votingProgress.step === 'waiting_confirmation' ? 'text-purple-300 font-bold' : ''}>
                 4. Consensus
               </div>
             </div>
