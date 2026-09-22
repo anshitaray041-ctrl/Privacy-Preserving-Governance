@@ -47,6 +47,28 @@
 
 ---
 
+## 📸 Deliverable Screenshots
+
+### 1. 🖥️ StellarRise Desktop Dashboard UI
+![Product UI](screenshots/product-ui.png)
+
+### 2. 📱 Mobile Responsive UI (Navigation Drawer & Touch Cards)
+![Mobile Responsive UI](screenshots/mobile-responsive-ui.png)
+
+### 3. 👁️ Zero-Knowledge Privacy Inspector (Dual-State Verification)
+![Privacy Explorer](screenshots/privacy-explorer-ui.png)
+
+### 4. ⚙️ Compact Compiler Output (4 Circuits Compiled with Managed Bindings)
+![Compact Compile Output](screenshots/compact-compile-output.jpg)
+
+### 5. 🏛️ Midnight Preprod Contract Deployment Output
+![Contract Deployed](screenshots/contract-deployed-preprod.jpg)
+
+### 6. 🧪 Automated Test Suite Output (12/12 Passing)
+![Test Output](screenshots/test-output-12-passing.jpg)
+
+---
+
 ## 🎯 Problem Statement & Solution
 
 ### The Public DAO Voting Dilemma
