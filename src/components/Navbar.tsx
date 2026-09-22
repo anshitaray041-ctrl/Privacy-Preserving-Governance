@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Shield, Sparkles, Wallet, LogOut, ChevronDown, CheckCircle2, Key, RefreshCw } from 'lucide-react';
+import { Shield, Sparkles, Wallet, LogOut, ChevronDown, CheckCircle2, Key, RefreshCw, AlertTriangle, ExternalLink } from 'lucide-react';
 import { useMidnight } from '../context/MidnightContext';
 import { NetworkType } from '../types';
 
 interface NavbarProps {
-  activeTab: 'proposals' | 'proofs' | 'architecture';
-  setActiveTab: (tab: 'proposals' | 'proofs' | 'architecture') => void;
+  activeTab: 'proposals' | 'privacy-demo' | 'proofs' | 'deployment' | 'architecture';
+  setActiveTab: (tab: 'proposals' | 'privacy-demo' | 'proofs' | 'deployment' | 'architecture') => void;
   openCreateModal: () => void;
 }
 
@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
   const [showWitnessDetails, setShowWitnessDetails] = useState(false);
 
   const networks: { id: NetworkType; label: string; badge: string }[] = [
-    { id: 'preprod', label: 'Midnight Preprod', badge: 'Live Network' },
+    { id: 'preprod', label: 'Midnight Preprod', badge: 'Live Preprod' },
     { id: 'preview', label: 'Midnight Preview', badge: 'Staging' },
     { id: 'local-standalone', label: 'Midnight Local Proof Node', badge: 'Simulation' },
   ];
@@ -46,10 +46,10 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
         </div>
 
         {/* Navigation Tabs */}
-        <nav className="hidden md:flex items-center gap-1 bg-[#0f1426] p-1.5 rounded-xl border border-[var(--border-subtle)]">
+        <nav className="hidden lg:flex items-center gap-1 bg-[#0f1426] p-1.5 rounded-xl border border-[var(--border-subtle)]">
           <button
             onClick={() => setActiveTab('proposals')}
-            className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
+            className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
               activeTab === 'proposals'
                 ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -58,8 +58,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
             Governance
           </button>
           <button
+            onClick={() => setActiveTab('privacy-demo')}
+            className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
+              activeTab === 'privacy-demo'
+                ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            Observable Privacy
+          </button>
+          <button
             onClick={() => setActiveTab('proofs')}
-            className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
+            className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
               activeTab === 'proofs'
                 ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -68,8 +78,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
             ZK Proof Audit
           </button>
           <button
+            onClick={() => setActiveTab('deployment')}
+            className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
+              activeTab === 'deployment'
+                ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            Deployment
+          </button>
+          <button
             onClick={() => setActiveTab('architecture')}
-            className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all ${
+            className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
               activeTab === 'architecture'
                 ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
                 : 'text-slate-400 hover:text-white hover:bg-white/5'
@@ -122,7 +142,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
           {/* Create Proposal Button */}
           <button
             onClick={openCreateModal}
-            className="btn btn-secondary text-xs sm:text-sm py-2 px-3.5 hidden lg:inline-flex"
+            className="btn btn-secondary text-xs sm:text-sm py-2 px-3.5 hidden sm:inline-flex"
           >
             + New Proposal
           </button>
@@ -150,7 +170,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
 
               {/* Witness Inspector Dropdown */}
               {showWitnessDetails && (
-                <div className="absolute right-0 top-14 w-80 bg-[#0d1224] border border-[var(--border-active)] rounded-2xl shadow-2xl p-4 z-50">
+                <div className="absolute right-0 top-14 w-84 bg-[#0d1224] border border-[var(--border-active)] rounded-2xl shadow-2xl p-4 z-50">
                   <div className="flex items-center justify-between pb-3 border-b border-white/10">
                     <div className="flex items-center gap-2 text-xs font-bold text-purple-300">
                       <Key size={14} />
@@ -205,7 +225,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
               className="btn btn-primary text-xs sm:text-sm py-2 px-4 shadow-lg shadow-purple-500/20"
             >
               <Wallet size={15} />
-              {wallet.isConnecting ? 'Connecting...' : 'Connect Lace Wallet'}
+              {wallet.isConnecting ? 'Connecting Lace...' : 'Connect Lace Wallet'}
             </button>
           )}
         </div>

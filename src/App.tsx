@@ -7,17 +7,18 @@ import { VotingModal } from './components/VotingModal';
 import { CreateProposalModal } from './components/CreateProposalModal';
 import { ProofAuditLog } from './components/ProofAuditLog';
 import { PrivacyArchitectureModal } from './components/PrivacyArchitectureModal';
-import { PrivacyBadge } from './components/PrivacyBadge';
+import { ObservablePrivacyPanel } from './components/ObservablePrivacyPanel';
+import { DeploymentInfoSection } from './components/DeploymentInfoSection';
 import { useGovernance } from './context/GovernanceContext';
 import { useMidnight } from './context/MidnightContext';
 import { ProposalMeta } from '../contract/src/types';
-import { Search, Filter, Plus, ShieldCheck, Sparkles, AlertCircle } from 'lucide-react';
+import { Search, Plus, Sparkles, AlertCircle, AlertTriangle, ShieldCheck, RefreshCw } from 'lucide-react';
 
 export const App: React.FC = () => {
   const { proposals, filter, searchQuery, setFilter, setSearchQuery } = useGovernance();
-  const { wallet, connectWallet } = useMidnight();
+  const { wallet, connectWallet, setNetwork } = useMidnight();
 
-  const [activeTab, setActiveTab] = useState<'proposals' | 'proofs' | 'architecture'>('proposals');
+  const [activeTab, setActiveTab] = useState<'proposals' | 'privacy-demo' | 'proofs' | 'deployment' | 'architecture'>('proposals');
   const [selectedProposal, setSelectedProposal] = useState<ProposalMeta | null>(null);
   const [votingProposal, setVotingProposal] = useState<ProposalMeta | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
@@ -56,7 +57,25 @@ export const App: React.FC = () => {
 
       <main className="app-container flex-1 mt-6">
         
-        {/* Banner Alert for Midnight Preprod */}
+        {/* Network Mismatch Warning Alert if any */}
+        {wallet.status === 'wrong_network' && (
+          <div className="mb-6 p-4 rounded-2xl bg-amber-950/40 border border-amber-500/40 text-amber-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2">
+              <AlertTriangle size={18} className="text-amber-400 shrink-0" />
+              <span>
+                Network Mismatch: Your wallet is connected to <strong>{wallet.network}</strong>, but this DApp is currently targeting <strong>{wallet.expectedNetwork}</strong>.
+              </span>
+            </div>
+            <button
+              onClick={() => setNetwork(wallet.expectedNetwork)}
+              className="btn btn-secondary text-xs py-1.5 px-3 whitespace-nowrap border-amber-500/40 text-amber-300 hover:bg-amber-500/10"
+            >
+              Switch to {wallet.expectedNetwork}
+            </button>
+          </div>
+        )}
+
+        {/* Top Banner */}
         <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-purple-950/40 via-indigo-950/40 to-cyan-950/40 border border-purple-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 shrink-0">
@@ -73,14 +92,23 @@ export const App: React.FC = () => {
             </div>
           </div>
           
-          {!wallet.isConnected && (
+          <div className="flex items-center gap-2">
             <button
-              onClick={connectWallet}
-              className="btn btn-primary text-xs py-2 px-4 whitespace-nowrap shadow-md"
+              onClick={() => setActiveTab('privacy-demo')}
+              className="btn btn-secondary text-xs py-2 px-3.5 whitespace-nowrap"
             >
-              Connect Wallet to Vote
+              <ShieldCheck size={13} className="text-purple-400" />
+              Observe Privacy
             </button>
-          )}
+            {!wallet.isConnected && (
+              <button
+                onClick={connectWallet}
+                className="btn btn-primary text-xs py-2 px-4 whitespace-nowrap shadow-md"
+              >
+                Connect Wallet to Vote
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Tab 1: Proposals / Governance */}
@@ -149,7 +177,7 @@ export const App: React.FC = () => {
 
                     <button
                       onClick={() => setIsCreateModalOpen(true)}
-                      className="btn btn-primary text-xs py-2 px-3.5 md:hidden"
+                      className="btn btn-primary text-xs py-2 px-3.5 sm:hidden"
                     >
                       <Plus size={14} /> New
                     </button>
@@ -181,10 +209,16 @@ export const App: React.FC = () => {
           </>
         )}
 
-        {/* Tab 2: Proof Explorer */}
+        {/* Tab 2: Observable Privacy Demonstration */}
+        {activeTab === 'privacy-demo' && <ObservablePrivacyPanel />}
+
+        {/* Tab 3: Proof Explorer */}
         {activeTab === 'proofs' && <ProofAuditLog />}
 
-        {/* Tab 3: Privacy Architecture */}
+        {/* Tab 4: Deployment Information */}
+        {activeTab === 'deployment' && <DeploymentInfoSection />}
+
+        {/* Tab 5: Privacy Architecture */}
         {activeTab === 'architecture' && <PrivacyArchitectureModal />}
 
       </main>
@@ -215,14 +249,14 @@ export const App: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="font-bold text-slate-300">StellarRise</span>
             <span>—</span>
-            <span>RiseIn Moonshots Submission</span>
+            <span>RiseIn Moonshots Submission (Level 2 & 3)</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
-            <span>Powered by Midnight Network</span>
+            <span>Midnight Preprod</span>
             <span>•</span>
-            <span>Compact Smart Contracts</span>
+            <span>Compact 0.19</span>
             <span>•</span>
-            <span>Zero-Knowledge Proofs</span>
+            <span>BLS12-381 ZK-SNARKs</span>
           </div>
         </div>
       </footer>
