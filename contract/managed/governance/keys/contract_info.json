@@ -1,0 +1,97 @@
+{
+  "contractName": "Governance",
+  "language": "Compact",
+  "compilerVersion": "0.19.0",
+  "sourceHash": "02dc65908981bcf47d34ca50a019cb16c3b886b844ef8874de93c523f0b6c98f",
+  "compiledAt": "2026-09-22T17:26:26.285Z",
+  "target": "midnight-network-preprod",
+  "circuits": [
+    {
+      "name": "createProposal",
+      "params": [
+        "titleHash",
+        "descriptionHash",
+        "creator",
+        "registrationDeadline",
+        "votingDeadline",
+        "voterEligibilityRoot",
+        "currentTime"
+      ],
+      "privateInputs": [],
+      "publicInputs": [
+        "titleHash",
+        "descriptionHash",
+        "creator",
+        "registrationDeadline",
+        "votingDeadline",
+        "voterEligibilityRoot",
+        "currentTime"
+      ],
+      "returns": "Field",
+      "constraints": 1420
+    },
+    {
+      "name": "registerEligibleVoter",
+      "params": [
+        "proposalId",
+        "voterCommitment",
+        "currentTime"
+      ],
+      "privateInputs": [],
+      "publicInputs": [
+        "proposalId",
+        "voterCommitment",
+        "currentTime"
+      ],
+      "returns": "Boolean",
+      "constraints": 890
+    },
+    {
+      "name": "castPrivateVote",
+      "params": [
+        "proposalId",
+        "nullifier",
+        "voteChoice",
+        "currentTime"
+      ],
+      "privateInputs": [
+        "voterSecretKey",
+        "voterSalt",
+        "voterEligibilityProof"
+      ],
+      "publicInputs": [
+        "proposalId",
+        "nullifier",
+        "voteChoice",
+        "currentTime"
+      ],
+      "returns": "Boolean",
+      "constraints": 4380
+    },
+    {
+      "name": "closeProposal",
+      "params": [
+        "proposalId",
+        "currentTime"
+      ],
+      "privateInputs": [],
+      "publicInputs": [
+        "proposalId",
+        "currentTime"
+      ],
+      "returns": "ProposalMeta",
+      "constraints": 620
+    }
+  ],
+  "ledgerState": {
+    "proposalCount": "Counter",
+    "proposals": "Map<Field, ProposalMeta>",
+    "registeredVoters": "Map<Field, Map<Bytes<32>, Boolean>>",
+    "usedNullifiers": "Map<Field, Map<Bytes<32>, Boolean>>"
+  },
+  "witnesses": [
+    "voterSecretKey",
+    "voterSalt",
+    "voterEligibilityProof"
+  ]
+}

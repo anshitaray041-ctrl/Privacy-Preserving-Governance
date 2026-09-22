@@ -1,0 +1,9 @@
+{
+  "circuit": "registerEligibleVoter",
+  "type": "verifier_key",
+  "curve": "BLS12-381",
+  "vk_alpha_1": "c6ed834f9a8e8ed30391ae79d1b1615bd25bae00138cf0c76b3634a17341ad810dca05f05f00dddf612d3a6c0fda181d",
+  "vk_beta_2": "0f2f749ad30d5d311ade5344d0c5dfe1f36ded7054173478a7ecdfea5f1f1bf7840d070f565c591e7ba75f1300f738fb4a7ae194b16514a804706277a5f756ed81136ce8d0d73e39d340bac8f95e5a11d361789b7b20c67b13a7cd19be1a04f0",
+  "checksum": "8672ae825a7824b036f9d945ca3da2b1a76b38b9e9d65a52259de64298ba4210",
+  "generatedAt": "2026-09-22T17:26:26.289Z"
+}

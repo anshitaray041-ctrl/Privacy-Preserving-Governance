@@ -1,0 +1,9 @@
+{
+  "circuit": "castPrivateVote",
+  "type": "verifier_key",
+  "curve": "BLS12-381",
+  "vk_alpha_1": "750b7ba81d13f95222b308dcc60a72529c2befaf3c22e0adc59c7e4ae9d44a63cbb0373564c0ba5671d2e32db3e81462",
+  "vk_beta_2": "f120fbf5b5333f4b72b59130d13242af0b8bed65ceb0b6e5b057b52c8ae4d48332534a382bd286e93b46278517a4ccd39edc5ef2f1860216c3a1ffb9efefdad86ec144c93b0b19287237ad47e20e8c81aee28083363a82bdacc3fc4e9b16f293",
+  "checksum": "8918ced291074b328ddc974c4670fc83dbc797902c88da227773d4f590140764",
+  "generatedAt": "2026-09-22T17:26:26.290Z"
+}
