@@ -238,6 +238,7 @@ def build_pdf(filename="StellarRise_Idea_Description.pdf"):
     elements.append(Paragraph("5. Moonshots Progression & Test Suite", h1_style))
     elements.append(Paragraph(
         "• <b>Live DApp URL:</b> <font color='#4338ca'><u>https://privacypreservingmidnightmoonlight.netlify.app/</u></font><br/>"
+        "• <b>Demo Video (YouTube):</b> <font color='#dc2626'><u>https://youtu.be/xvvtQR7w9QA</u></font><br/>"
         "• <b>Level 1 to 6 (100% Complete):</b> Full compliance with Rise In Moonshot requirements.<br/>"
         "• <b>Automated Test Suite:</b> 12/12 passing tests across contract mechanics, privacy guarantees, and frontend consistency.<br/>"
         "• <b>Security Audit:</b> 100% Passed (0 Critical, 0 High, 0 Medium, 0 Low vulnerabilities).",

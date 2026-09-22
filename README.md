@@ -6,7 +6,7 @@
 [![Compact Language](https://img.shields.io/badge/Compact%20Language-v0.19.0-indigo)](https://midnight.network)
 [![CI/CD Pipeline](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/actions/workflows/ci.yml/badge.svg)](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/actions)
 [![Live Demo](https://img.shields.io/badge/🌐_Live%20DApp-Production%20Website-cyan?logo=netlify)](https://privacypreservingmidnightmoonlight.netlify.app/)
-[![Demo Video](https://img.shields.io/badge/🎬_Demo%20Video-Walkthrough%20Guide-red?logo=youtube)](DEMO_SCRIPT.md)
+[![Demo Video](https://img.shields.io/badge/🎬_Demo%20Video-YouTube%20Walkthrough-red?logo=youtube)](https://youtu.be/xvvtQR7w9QA)
 [![Security Audit](https://img.shields.io/badge/🛡️_Security%20Audit-Passed%20100%25-brightgreen)](SECURITY_AUDIT_REPORT.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -32,7 +32,7 @@
 | **1. Public GitHub Repository** | [github.com/anshitaray041-ctrl/Privacy-Preserving-Governance](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance) | ✅ Active & Public |
 | **2. Meaningful Commits** | [Verified Git History on `main`](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/commits/main) | ✅ 30+ Commits |
 | **3. Live Production DApp** | **[privacypreservingmidnightmoonlight.netlify.app](https://privacypreservingmidnightmoonlight.netlify.app/)** | ✅ Live & Responsive |
-| **4. Demo Video & Script** | [`DEMO_SCRIPT.md`](DEMO_SCRIPT.md) *(Full Step-by-Step Walkthrough)* | ✅ Detailed Walkthrough |
+| **4. Demo Video Walkthrough** | **[Watch 1080p Demo on YouTube](https://youtu.be/xvvtQR7w9QA)** | ✅ Live on YouTube |
 | **5. Compact Smart Contract (v0.19)** | [`contract/governance.compact`](contract/governance.compact) & [`contract/src/index.compact`](contract/src/index.compact) | ✅ 4 Circuits Verified |
 | **6. Preprod Deployed Contract Address** | `0x3a9f1b2c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a` | ✅ Deployed on Preprod |
 | **7. Automated Test Suite (12 Tests)** | [`test/contract.test.ts`](test/contract.test.ts), [`test/privacy.test.ts`](test/privacy.test.ts), [`test/frontend.test.ts`](test/frontend.test.ts) | ✅ 12/12 Tests Passing |
@@ -67,6 +67,17 @@
 
 ### 6. 🧪 Automated Test Suite Output (12/12 Passing)
 ![Test Output](screenshots/test-output-12-passing.jpg)
+
+---
+
+## 🎥 Demo Video Walkthrough
+
+Watch the complete **StellarRise** workflow in action on YouTube:
+
+[![Watch StellarRise Demo on YouTube](https://img.shields.io/badge/▶️_Watch_Demo_Video-YouTube-red?style=for-the-badge&logo=youtube)](https://youtu.be/xvvtQR7w9QA)
+
+> **Direct Link:** [https://youtu.be/xvvtQR7w9QA](https://youtu.be/xvvtQR7w9QA)  
+> **Video Covers:** Connecting Midnight Lace / Demo Wallet, Shielded Voter Eligibility verification, Client-Side Compact Zero-Knowledge circuit execution, Double-voting prevention with nullifiers, and Observable Dual-State Ledger verification.
 
 ---
 

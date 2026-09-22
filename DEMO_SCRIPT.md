@@ -1,6 +1,9 @@
 # StellarRise: 60-Second Demo Video Script
 
-This script provides exact second-by-second timestamps and audio cues for recording the submission demo video.
+[![Watch Demo on YouTube](https://img.shields.io/badge/🎬_Watch_Demo_Video-YouTube-red?style=for-the-badge&logo=youtube)](https://youtu.be/xvvtQR7w9QA)
+
+> **YouTube Video URL:** [https://youtu.be/xvvtQR7w9QA](https://youtu.be/xvvtQR7w9QA)  
+> This script provides exact second-by-second timestamps and audio cues for the walkthrough demo video.
 
 ---
 
