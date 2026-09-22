@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
+import { LandingHero } from './components/LandingHero';
 import { StatsOverview } from './components/StatsOverview';
 import { ProposalCard } from './components/ProposalCard';
 import { ProposalDetail } from './components/ProposalDetail';
@@ -12,7 +13,7 @@ import { DeploymentInfoSection } from './components/DeploymentInfoSection';
 import { useGovernance } from './context/GovernanceContext';
 import { useMidnight } from './context/MidnightContext';
 import { ProposalMeta } from '../contract/src/types';
-import { Search, Plus, Sparkles, AlertCircle, AlertTriangle, ShieldCheck, RefreshCw } from 'lucide-react';
+import { Search, Plus, Sparkles, AlertCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
 
 export const App: React.FC = () => {
   const { proposals, filter, searchQuery, setFilter, setSearchQuery } = useGovernance();
@@ -22,6 +23,7 @@ export const App: React.FC = () => {
   const [selectedProposal, setSelectedProposal] = useState<ProposalMeta | null>(null);
   const [votingProposal, setVotingProposal] = useState<ProposalMeta | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [hasDismissedHero, setHasDismissedHero] = useState(false);
 
   // Filtered proposals
   const filteredProposals = proposals.filter((p) => {
@@ -55,9 +57,9 @@ export const App: React.FC = () => {
         openCreateModal={() => setIsCreateModalOpen(true)}
       />
 
-      <main className="app-container flex-1 mt-6">
+      <main className="app-container flex-1 mt-4">
         
-        {/* Network Mismatch Warning Alert if any */}
+        {/* Network Mismatch Warning Alert */}
         {wallet.status === 'wrong_network' && (
           <div className="mb-6 p-4 rounded-2xl bg-amber-950/40 border border-amber-500/40 text-amber-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
             <div className="flex items-center gap-2">
@@ -75,43 +77,7 @@ export const App: React.FC = () => {
           </div>
         )}
 
-        {/* Top Banner */}
-        <div className="mb-6 p-4 rounded-2xl bg-gradient-to-r from-purple-950/40 via-indigo-950/40 to-cyan-950/40 border border-purple-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 shrink-0">
-              <Sparkles size={18} />
-            </div>
-            <div>
-              <h4 className="text-sm font-bold text-white flex items-center gap-2">
-                Midnight Network Privacy Protocol
-                <span className="badge badge-purple text-[10px]">Zero-Knowledge</span>
-              </h4>
-              <p className="text-xs text-slate-300">
-                StellarRise enforces confidential ballots with client-side witness proving & public nullifiers.
-              </p>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setActiveTab('privacy-demo')}
-              className="btn btn-secondary text-xs py-2 px-3.5 whitespace-nowrap"
-            >
-              <ShieldCheck size={13} className="text-purple-400" />
-              Observe Privacy
-            </button>
-            {!wallet.isConnected && (
-              <button
-                onClick={connectWallet}
-                className="btn btn-primary text-xs py-2 px-4 whitespace-nowrap shadow-md"
-              >
-                Connect Wallet to Vote
-              </button>
-            )}
-          </div>
-        </div>
-
-        {/* Tab 1: Proposals / Governance */}
+        {/* Tab 1: Proposals / Governance & Landing */}
         {activeTab === 'proposals' && (
           <>
             {selectedProposal ? (
@@ -122,8 +88,21 @@ export const App: React.FC = () => {
               />
             ) : (
               <>
+                {/* Landing Hero (Shown when not drilling into details) */}
+                {!hasDismissedHero && (
+                  <LandingHero
+                    onLaunchGovernance={() => {
+                      const el = document.getElementById('governance-proposals-section');
+                      el?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    onExplorePrivacy={() => setActiveTab('privacy-demo')}
+                  />
+                )}
+
                 {/* Stats Overview */}
-                <StatsOverview />
+                <div id="governance-proposals-section">
+                  <StatsOverview />
+                </div>
 
                 {/* Filters & Controls */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-6">
@@ -249,7 +228,7 @@ export const App: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="font-bold text-slate-300">StellarRise</span>
             <span>—</span>
-            <span>RiseIn Moonshots Submission (Level 2 & 3)</span>
+            <span>RiseIn Moonshots Submission (Level 1, 2 & 3)</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
             <span>Midnight Preprod</span>
