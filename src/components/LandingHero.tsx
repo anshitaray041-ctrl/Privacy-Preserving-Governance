@@ -5,10 +5,11 @@ import { useMidnight } from '../context/MidnightContext';
 interface LandingHeroProps {
   onLaunchGovernance: () => void;
   onExplorePrivacy: () => void;
+  onConnectWallet: () => void;
 }
 
-export const LandingHero: React.FC<LandingHeroProps> = ({ onLaunchGovernance, onExplorePrivacy }) => {
-  const { wallet, connectWallet } = useMidnight();
+export const LandingHero: React.FC<LandingHeroProps> = ({ onLaunchGovernance, onExplorePrivacy, onConnectWallet }) => {
+  const { wallet } = useMidnight();
 
   return (
     <div className="relative overflow-hidden py-12 md:py-16">
@@ -47,10 +48,10 @@ export const LandingHero: React.FC<LandingHeroProps> = ({ onLaunchGovernance, on
 
           {!wallet.isConnected ? (
             <button
-              onClick={connectWallet}
+              onClick={onConnectWallet}
               className="btn btn-secondary text-sm sm:text-base py-3 px-5 font-semibold"
             >
-              Connect Lace Wallet
+              Connect Wallet
             </button>
           ) : (
             <button

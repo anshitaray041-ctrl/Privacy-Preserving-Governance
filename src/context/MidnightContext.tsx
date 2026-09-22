@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { NetworkType, WalletState, WalletConnectionStatus } from '../types';
+import { NetworkType, WalletState, WalletConnectionStatus, WalletType } from '../types';
 import { MidnightClientService } from '../services/midnightClient';
 import { VoterWitness } from '../../contract/src/witness';
 
 interface MidnightContextType {
   wallet: WalletState;
   voterWitness: VoterWitness;
-  connectWallet: () => Promise<void>;
+  connectWallet: (walletType?: WalletType) => Promise<void>;
   disconnectWallet: () => void;
   setNetwork: (network: NetworkType) => void;
   regenerateIdentity: () => void;
@@ -23,6 +23,7 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     isConnected: false,
     isConnecting: false,
     walletName: 'Lace Midnight',
+    walletType: 'lace',
     address: '',
     shieldedAddress: '',
     dustBalance: '0.00 DUST',
@@ -39,10 +40,10 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     }));
   }, [voterWitness]);
 
-  const connectWallet = async () => {
+  const connectWallet = async (walletType: WalletType = 'lace') => {
     setWallet(prev => ({ ...prev, isConnecting: true, status: 'connecting', error: undefined }));
     try {
-      const data = await MidnightClientService.connectLaceWallet(expectedNetwork);
+      const data = await MidnightClientService.connectWallet(walletType, expectedNetwork);
       
       // Check for network mismatch
       const isMismatch = data.actualNetwork !== expectedNetwork;
@@ -56,17 +57,18 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         shieldedAddress: data.shieldedAddress,
         dustBalance: data.dustBalance,
         walletName: data.walletName,
+        walletType: data.walletType,
         network: data.actualNetwork,
         expectedNetwork: expectedNetwork,
       }));
     } catch (err: any) {
-      console.error('Lace wallet connection error:', err);
+      console.error('Wallet connection error:', err);
       setWallet(prev => ({
         ...prev,
         status: 'disconnected',
         isConnected: false,
         isConnecting: false,
-        error: err.message || 'Failed to connect Lace wallet',
+        error: err.message || 'Failed to connect wallet',
       }));
     }
   };

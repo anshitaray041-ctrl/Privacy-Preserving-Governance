@@ -23,6 +23,7 @@ export const App: React.FC = () => {
   const [selectedProposal, setSelectedProposal] = useState<ProposalMeta | null>(null);
   const [votingProposal, setVotingProposal] = useState<ProposalMeta | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [hasDismissedHero, setHasDismissedHero] = useState(false);
 
   // Filtered proposals
@@ -55,6 +56,8 @@ export const App: React.FC = () => {
           setSelectedProposal(null);
         }}
         openCreateModal={() => setIsCreateModalOpen(true)}
+        externalWalletModalOpen={isWalletModalOpen}
+        onWalletModalClose={() => setIsWalletModalOpen(false)}
       />
 
       <main className="app-container flex-1 mt-4">
@@ -96,6 +99,7 @@ export const App: React.FC = () => {
                       el?.scrollIntoView({ behavior: 'smooth' });
                     }}
                     onExplorePrivacy={() => setActiveTab('privacy-demo')}
+                    onConnectWallet={() => setIsWalletModalOpen(true)}
                   />
                 )}
 

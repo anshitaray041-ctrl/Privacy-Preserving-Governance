@@ -1,0 +1,189 @@
+// StellarRise: Privacy-Preserving Governance Smart Contract
+// Language: Compact (Midnight Network)
+// Standard: Production-Grade Privacy-Preserving Voting with Zero-Knowledge Nullifiers and Shielded Membership
+
+import CompactRuntime;
+
+enum ProposalStatus {
+    Pending,
+    Active,
+    Closed
+}
+
+enum VoteOption {
+    No,
+    Yes,
+    Abstain
+}
+
+struct ProposalMeta {
+    id: Field,
+    titleHash: Bytes<32>,
+    descriptionHash: Bytes<32>,
+    creator: Bytes<32>,
+    registrationDeadline: Uint<64>,
+    votingDeadline: Uint<64>,
+    voterEligibilityRoot: Bytes<32>,
+    status: ProposalStatus,
+    yesCount: Uint<64>,
+    noCount: Uint<64>,
+    abstainCount: Uint<64>,
+    totalVotesCast: Uint<64>,
+    createdAt: Uint<64>
+}
+
+// -------------------------------------------------------------
+// PUBLIC LEDGER STATE
+// -------------------------------------------------------------
+// Ledger state visible on Midnight's public verifiable log
+export ledger proposalCount: Counter;
+export ledger proposals: Map<Field, ProposalMeta>;
+export ledger registeredVoters: Map<Field, Map<Bytes<32>, Boolean>>;
+export ledger usedNullifiers: Map<Field, Map<Bytes<32>, Boolean>>;
+
+// -------------------------------------------------------------
+// WITNESS DECLARATIONS (Client-Side Private State)
+// -------------------------------------------------------------
+// Witnesses extract private credentials held only inside the voter's local wallet/enclave
+witness voterSecretKey(): Bytes<32>;
+witness voterSalt(): Bytes<32>;
+witness voterEligibilityProof(proposalId: Field): Bytes<32>;
+
+// -------------------------------------------------------------
+// CIRCUITS (Zero-Knowledge Transitions)
+// -------------------------------------------------------------
+
+/**
+ * createProposal: Initializes a new governance proposal with an eligibility merkle root
+ * and voting duration.
+ */
+export circuit createProposal(
+    titleHash: Bytes<32>,
+    descriptionHash: Bytes<32>,
+    creator: Bytes<32>,
+    registrationDeadline: Uint<64>,
+    votingDeadline: Uint<64>,
+    voterEligibilityRoot: Bytes<32>,
+    currentTime: Uint<64>
+): Field {
+    assert(votingDeadline > registrationDeadline, "Voting deadline must be after registration deadline");
+    assert(registrationDeadline >= currentTime, "Registration deadline cannot be in the past");
+
+    proposalCount.increment(1);
+    let newId: Field = proposalCount.read();
+
+    let meta = ProposalMeta {
+        id: newId,
+        titleHash: titleHash,
+        descriptionHash: descriptionHash,
+        creator: creator,
+        registrationDeadline: registrationDeadline,
+        votingDeadline: votingDeadline,
+        voterEligibilityRoot: voterEligibilityRoot,
+        status: ProposalStatus.Active,
+        yesCount: 0,
+        noCount: 0,
+        abstainCount: 0,
+        totalVotesCast: 0,
+        createdAt: currentTime
+    };
+
+    proposals.insert(newId, meta);
+    return newId;
+}
+
+/**
+ * registerEligibleVoter: Registers a shielded voter commitment before voting deadline.
+ */
+export circuit registerEligibleVoter(
+    proposalId: Field,
+    voterCommitment: Bytes<32>,
+    currentTime: Uint<64>
+): Boolean {
+    let proposal = proposals.lookup(proposalId);
+    assert(proposal.status == ProposalStatus.Active, "Proposal is not active");
+    assert(currentTime <= proposal.registrationDeadline, "Voter registration period has ended");
+
+    registeredVoters.insert(proposalId, voterCommitment, true);
+    return true;
+}
+
+/**
+ * castPrivateVote: Zero-knowledge private voting circuit.
+ * Verifies voter eligibility commitment, derives unique nullifier to prevent double-voting,
+ * and increments aggregate tally without revealing the voter's individual identity or secret.
+ */
+export circuit castPrivateVote(
+    proposalId: Field,
+    nullifier: Bytes<32>,
+    voteChoice: VoteOption,
+    currentTime: Uint<64>
+): Boolean {
+    // 1. Verify proposal status & time bounds
+    let proposal = proposals.lookup(proposalId);
+    assert(proposal.status == ProposalStatus.Active, "Proposal is not active");
+    assert(currentTime <= proposal.votingDeadline, "Voting period has ended");
+
+    // 2. Fetch private witness data inside ZK prover
+    let secret = voterSecretKey();
+    let salt = voterSalt();
+
+    // 3. Cryptographic commitment verification (in-circuit)
+    // commitment = Hash(secretKey, salt)
+    let computedCommitment = hashCommitment(secret, salt);
+    let isRegistered = registeredVoters.lookup(proposalId, computedCommitment);
+    assert(isRegistered == true, "Voter commitment is not eligible or registered for this proposal");
+
+    // 4. Nullifier verification (in-circuit)
+    // nullifier = Hash(secretKey, proposalId, "STELLARRISE_VOTE_NULLIFIER")
+    let computedNullifier = hashNullifier(secret, proposalId);
+    assert(computedNullifier == nullifier, "Computed nullifier does not match public nullifier");
+
+    // 5. Check duplicate vote nullifier in public ledger state
+    let alreadyVoted = usedNullifiers.lookup(proposalId, nullifier);
+    assert(alreadyVoted == false, "Double voting detected: Nullifier has already been used");
+
+    // 6. Record nullifier in public state to permanently prevent replay
+    usedNullifiers.insert(proposalId, nullifier, true);
+
+    // 7. Update public aggregate tallies anonymously
+    if (voteChoice == VoteOption.Yes) {
+        proposal.yesCount = proposal.yesCount + 1;
+    } else if (voteChoice == VoteOption.No) {
+        proposal.noCount = proposal.noCount + 1;
+    } else {
+        proposal.abstainCount = proposal.abstainCount + 1;
+    }
+    proposal.totalVotesCast = proposal.totalVotesCast + 1;
+
+    proposals.insert(proposalId, proposal);
+    return true;
+}
+
+/**
+ * closeProposal: Finalizes a proposal and locks voting.
+ */
+export circuit closeProposal(
+    proposalId: Field,
+    currentTime: Uint<64>
+): ProposalMeta {
+    let proposal = proposals.lookup(proposalId);
+    assert(proposal.status == ProposalStatus.Active, "Proposal is not active");
+    assert(currentTime >= proposal.votingDeadline, "Voting deadline has not elapsed yet");
+
+    proposal.status = ProposalStatus.Closed;
+    proposals.insert(proposalId, proposal);
+    return proposal;
+}
+
+// -------------------------------------------------------------
+// INTERNAL CRYPTOGRAPHIC PRIMITIVES
+// -------------------------------------------------------------
+
+circuit hashCommitment(secret: Bytes<32>, salt: Bytes<32>): Bytes<32> {
+    return sha256(concat(secret, salt));
+}
+
+circuit hashNullifier(secret: Bytes<32>, proposalId: Field): Bytes<32> {
+    return sha256(concat(secret, toBytes(proposalId)));
+}

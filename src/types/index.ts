@@ -5,6 +5,8 @@ export type { ProposalMeta, ZkProofReceipt };
 
 export type NetworkType = 'preprod' | 'preview' | 'local-standalone';
 
+export type WalletType = 'lace' | 'freighter' | 'demo';
+
 export type WalletConnectionStatus = 
   | 'disconnected'
   | 'connecting'
@@ -23,6 +25,7 @@ export interface WalletState {
   isConnected: boolean;
   isConnecting: boolean;
   walletName: string;
+  walletType: WalletType;
   address: string;
   shieldedAddress: string;
   dustBalance: string;
