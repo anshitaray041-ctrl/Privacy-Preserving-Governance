@@ -133,6 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
   const [showNetworkDropdown, setShowNetworkDropdown] = useState(false);
   const [showWitnessDetails, setShowWitnessDetails] = useState(false);
   const [showWalletModal, setShowWalletModal] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [connectingType, setConnectingType] = useState<WalletType | null>(null);
   const [connectionError, setConnectionError] = useState<string | undefined>();
 
@@ -191,86 +192,57 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
     }
   };
 
+  const navItems: { id: 'proposals' | 'privacy-demo' | 'proofs' | 'deployment' | 'architecture'; label: string; icon: string }[] = [
+    { id: 'proposals', label: 'Governance', icon: '🏛️' },
+    { id: 'privacy-demo', label: 'Observable Privacy', icon: '👁️' },
+    { id: 'proofs', label: 'ZK Proof Audit', icon: '🔒' },
+    { id: 'deployment', label: 'Deployment', icon: '🚀' },
+    { id: 'architecture', label: 'Privacy Model', icon: '📐' },
+  ];
+
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b border-[var(--border-subtle)] bg-[#070913]/90 backdrop-blur-md">
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 h-18 sm:h-20 flex items-center justify-between">
           
           {/* Brand Logo */}
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => setActiveTab('proposals')}>
-            <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 p-[1px] shadow-lg shadow-purple-500/20">
+          <div className="flex items-center gap-2.5 sm:gap-3 cursor-pointer" onClick={() => setActiveTab('proposals')}>
+            <div className="relative flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-cyan-400 p-[1px] shadow-lg shadow-purple-500/20">
               <div className="w-full h-full bg-[#0b0e1b] rounded-[11px] flex items-center justify-center">
-                <Shield className="w-6 h-6 text-purple-400" />
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-purple-400" />
               </div>
-              <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-cyan-300 animate-pulse" />
+              <Sparkles className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-300 animate-pulse" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="font-display font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-purple-200">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="font-display font-bold text-lg sm:text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-purple-200">
                   StellarRise
                 </span>
-                <span className="badge badge-purple text-[10px] py-0.5 px-2">Midnight DApp</span>
+                <span className="badge badge-purple text-[9px] sm:text-[10px] py-0.5 px-1.5 sm:px-2">Midnight DApp</span>
               </div>
-              <p className="text-xs text-[var(--text-muted)] font-medium">Privacy-Preserving Governance</p>
+              <p className="text-[10px] sm:text-xs text-[var(--text-muted)] font-medium">Privacy-Preserving Governance</p>
             </div>
           </div>
 
-          {/* Navigation Tabs */}
+          {/* Desktop Navigation Tabs */}
           <nav className="hidden lg:flex items-center gap-1 bg-[#0f1426] p-1.5 rounded-xl border border-[var(--border-subtle)]">
-            <button
-              onClick={() => setActiveTab('proposals')}
-              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === 'proposals'
-                  ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              Governance
-            </button>
-            <button
-              onClick={() => setActiveTab('privacy-demo')}
-              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === 'privacy-demo'
-                  ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              Observable Privacy
-            </button>
-            <button
-              onClick={() => setActiveTab('proofs')}
-              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === 'proofs'
-                  ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              ZK Proof Audit
-            </button>
-            <button
-              onClick={() => setActiveTab('deployment')}
-              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === 'deployment'
-                  ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              Deployment
-            </button>
-            <button
-              onClick={() => setActiveTab('architecture')}
-              className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
-                activeTab === 'architecture'
-                  ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              Privacy Model
-            </button>
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveTab(item.id)}
+                className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-all ${
+                  activeTab === item.id
+                    ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </nav>
 
-          {/* Right Section: Network & Wallet */}
-          <div className="flex items-center gap-3">
+          {/* Right Section: Network & Wallet & Mobile Toggle */}
+          <div className="flex items-center gap-2 sm:gap-3">
             
             {/* Network Selector */}
             <div className="relative">
@@ -312,7 +284,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
             {/* Create Proposal Button */}
             <button
               onClick={openCreateModal}
-              className="btn btn-secondary text-xs sm:text-sm py-2 px-3.5 hidden sm:inline-flex"
+              className="btn btn-secondary text-xs sm:text-sm py-1.5 sm:py-2 px-3 sm:px-3.5 hidden sm:inline-flex"
             >
               + New Proposal
             </button>
@@ -322,29 +294,29 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
               <div className="relative flex items-center gap-2">
                 <button
                   onClick={() => setShowWitnessDetails(!showWitnessDetails)}
-                  className="flex items-center gap-2.5 bg-gradient-to-r from-purple-950/60 to-indigo-950/60 border border-purple-500/30 hover:border-purple-500/60 px-3.5 py-2 rounded-xl text-left cursor-pointer transition-all"
+                  className="flex items-center gap-2 bg-gradient-to-r from-purple-950/60 to-indigo-950/60 border border-purple-500/30 hover:border-purple-500/60 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-left cursor-pointer transition-all"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-purple-600/30 flex items-center justify-center text-sm">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-purple-600/30 flex items-center justify-center text-xs sm:text-sm">
                     {getWalletIcon()}
                   </div>
                   <div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-mono font-bold text-white">
-                        {wallet.address ? `${wallet.address.slice(0, 8)}...${wallet.address.slice(-4)}` : 'mn_voter'}
+                    <div className="flex items-center gap-1">
+                      <span className="text-[11px] sm:text-xs font-mono font-bold text-white">
+                        {wallet.address ? `${wallet.address.slice(0, 6)}...${wallet.address.slice(-3)}` : 'mn_voter'}
                       </span>
-                      <CheckCircle2 size={12} className="text-emerald-400" />
+                      <CheckCircle2 size={11} className="text-emerald-400" />
                     </div>
-                    <div className="text-[10px] font-mono text-cyan-300">{wallet.dustBalance}</div>
+                    <div className="text-[9px] sm:text-[10px] font-mono text-cyan-300">{wallet.dustBalance}</div>
                   </div>
                 </button>
 
                 {/* Witness Inspector Dropdown */}
                 {showWitnessDetails && (
-                  <div className="absolute right-0 top-14 w-84 bg-[#0d1224] border border-[var(--border-active)] rounded-2xl shadow-2xl p-4 z-50">
+                  <div className="absolute right-0 top-14 w-80 sm:w-84 bg-[#0d1224] border border-[var(--border-active)] rounded-2xl shadow-2xl p-4 z-50">
                     <div className="flex items-center justify-between pb-3 border-b border-white/10">
                       <div className="flex items-center gap-2 text-xs font-bold text-purple-300">
                         <Key size={14} />
-                        Voter Private Witness (Client-Only)
+                        Voter Witness (Client-Only)
                       </div>
                       <button
                         onClick={regenerateIdentity}
@@ -367,31 +339,25 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
                     <div className="mt-3 space-y-2 text-xs">
                       <div>
                         <div className="text-[10px] uppercase font-bold text-slate-400">Shielded Address</div>
-                        <div className="font-mono text-[11px] text-cyan-300 bg-black/40 p-1.5 rounded border border-white/5 break-all">
+                        <div className="font-mono text-[10px] text-cyan-300 bg-black/40 p-1.5 rounded border border-white/5 break-all">
                           {voterWitness.getVoterAddress()}
                         </div>
                       </div>
                       <div>
-                        <div className="text-[10px] uppercase font-bold text-slate-400">Voter Commitment (Public Hash)</div>
-                        <div className="font-mono text-[11px] text-purple-300 bg-black/40 p-1.5 rounded border border-white/5 break-all">
-                          {voterWitness.getCommitment().slice(0, 32)}...
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-[10px] uppercase font-bold text-amber-400">Private Secret Key (Never On-Chain)</div>
-                        <div className="font-mono text-[11px] text-amber-300/80 bg-black/40 p-1.5 rounded border border-white/5 break-all">
-                          {voterWitness.getSecretKey().slice(0, 16)}••••••••••••••••••••••••••••••••
+                        <div className="text-[10px] uppercase font-bold text-slate-400">Commitment Hash</div>
+                        <div className="font-mono text-[10px] text-purple-300 bg-black/40 p-1.5 rounded border border-white/5 break-all">
+                          {voterWitness.getCommitment().slice(0, 28)}...
                         </div>
                       </div>
                     </div>
 
                     <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
-                      <span className="text-[11px] text-slate-400">{getWalletLabel()} Connected</span>
+                      <span className="text-[10px] text-slate-400">{getWalletLabel()} Connected</span>
                       <button
                         onClick={disconnectWallet}
                         className="text-xs text-rose-400 hover:text-rose-300 flex items-center gap-1 font-semibold"
                       >
-                        <LogOut size={13} /> Disconnect
+                        <LogOut size={12} /> Disconnect
                       </button>
                     </div>
                   </div>
@@ -401,15 +367,106 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
               <button
                 onClick={() => setShowWalletModal(true)}
                 disabled={wallet.isConnecting}
-                className="btn btn-primary text-xs sm:text-sm py-2 px-4 shadow-lg shadow-purple-500/20"
+                className="btn btn-primary text-xs py-1.5 sm:py-2 px-3 sm:px-4 shadow-lg shadow-purple-500/20"
               >
-                <Wallet size={15} />
-                {wallet.isConnecting ? 'Connecting...' : 'Connect Wallet'}
+                <Wallet size={14} />
+                <span className="hidden xs:inline">{wallet.isConnecting ? 'Connecting...' : 'Connect'}</span>
+                <span className="xs:hidden">Connect</span>
               </button>
             )}
+
+            {/* Mobile Hamburger Menu Toggle Button */}
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="lg:hidden p-2 rounded-xl bg-[#0f1426] border border-[var(--border-subtle)] text-slate-300 hover:text-white"
+              aria-label="Toggle navigation"
+            >
+              {showMobileMenu ? <X size={18} /> : (
+                <div className="space-y-1 w-4">
+                  <div className="h-0.5 bg-current rounded-full" />
+                  <div className="h-0.5 bg-current rounded-full" />
+                  <div className="h-0.5 bg-current rounded-full" />
+                </div>
+              )}
+            </button>
+
           </div>
         </div>
+
+        {/* Mobile Slide-Down Drawer */}
+        {showMobileMenu && (
+          <div className="lg:hidden border-t border-white/10 bg-[#0a0d1d] px-4 py-4 space-y-3 shadow-2xl">
+            <div className="grid grid-cols-2 gap-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => {
+                    setActiveTab(item.id);
+                    setShowMobileMenu(false);
+                  }}
+                  className={`flex items-center gap-2 p-2.5 rounded-xl text-xs font-semibold transition-all ${
+                    activeTab === item.id
+                      ? 'bg-purple-600/30 text-white border border-purple-500/40 shadow-sm'
+                      : 'bg-[#101428] text-slate-300 border border-white/5 hover:bg-white/5'
+                  }`}
+                >
+                  <span>{item.icon}</span>
+                  <span>{item.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Mobile Action Buttons */}
+            <div className="pt-2 border-t border-white/10 flex items-center justify-between gap-2">
+              <button
+                onClick={() => {
+                  openCreateModal();
+                  setShowMobileMenu(false);
+                }}
+                className="btn btn-primary text-xs py-2 px-3 flex-1 justify-center"
+              >
+                + Create Proposal
+              </button>
+              <button
+                onClick={() => {
+                  setShowNetworkDropdown(!showNetworkDropdown);
+                  setShowMobileMenu(false);
+                }}
+                className="btn btn-secondary text-xs py-2 px-3 flex items-center justify-center gap-1.5"
+              >
+                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                <span>{wallet.network}</span>
+              </button>
+            </div>
+          </div>
+        )}
       </header>
+
+      {/* Mobile Sticky Bottom Navigation Bar */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#070913]/95 backdrop-blur-lg border-t border-[var(--border-subtle)] px-2 py-1.5 flex items-center justify-around">
+        {navItems.map((item) => {
+          const isActive = activeTab === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => setActiveTab(item.id)}
+              className={`flex flex-col items-center justify-center py-1 px-2 rounded-lg text-[10px] font-medium transition-all ${
+                isActive
+                  ? 'text-purple-300 font-bold'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <span className={`text-base mb-0.5 ${isActive ? 'scale-110 transition-transform' : 'opacity-70'}`}>
+                {item.icon}
+              </span>
+              <span className="tracking-tight text-[9px] whitespace-nowrap">{item.label}</span>
+              {isActive && (
+                <div className="w-1 h-1 rounded-full bg-purple-400 mt-0.5" />
+              )}
+            </button>
+          );
+        })}
+      </div>
 
       {/* Wallet Selection Modal */}
       <WalletSelectionModal

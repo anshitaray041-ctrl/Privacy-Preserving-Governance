@@ -60,7 +60,7 @@ export const App: React.FC = () => {
         onWalletModalClose={() => setIsWalletModalOpen(false)}
       />
 
-      <main className="app-container flex-1 mt-4">
+      <main className="app-container flex-1 mt-4 pb-24 lg:pb-12">
         
         {/* Network Mismatch Warning Alert */}
         {wallet.status === 'wrong_network' && (
