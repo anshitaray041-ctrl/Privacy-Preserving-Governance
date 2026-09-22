@@ -5,7 +5,7 @@
 [![Midnight Network](https://img.shields.io/badge/Midnight-Preprod%20Testnet-blue?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTEyIDJBMTAgMTAgMCAxIDAgMjIgMTJBMTAgMTAgMCAwIDAgMTIgMlptMCAxOGE4IDggMCAxIDEgOC04QTggOCAwIDAgMSAxMiAyMFoiLz48L3N2Zz4=)](https://midnight.network)
 [![Compact Language](https://img.shields.io/badge/Compact%20Language-v0.19.0-indigo)](https://midnight.network)
 [![CI/CD Pipeline](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/actions/workflows/ci.yml/badge.svg)](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/actions)
-[![Live Demo](https://img.shields.io/badge/🌐_Live%20DApp-Production%20Website-cyan?logo=netlify)](http://localhost:3000)
+[![Live Demo](https://img.shields.io/badge/🌐_Live%20DApp-Production%20Website-cyan?logo=netlify)](https://privacypreservingmidnightmoonlight.netlify.app/)
 [![Demo Video](https://img.shields.io/badge/🎬_Demo%20Video-Walkthrough%20Guide-red?logo=youtube)](DEMO_SCRIPT.md)
 [![Security Audit](https://img.shields.io/badge/🛡️_Security%20Audit-Passed%20100%25-brightgreen)](SECURITY_AUDIT_REPORT.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -31,7 +31,7 @@
 |---|---|:---:|
 | **1. Public GitHub Repository** | [github.com/anshitaray041-ctrl/Privacy-Preserving-Governance](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance) | ✅ Active & Public |
 | **2. Meaningful Commits** | [Verified Git History on `main`](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/commits/main) | ✅ 30+ Commits |
-| **3. Live Production DApp** | **[StellarRise Web Application (Local & Netlify)](http://localhost:3000)** | ✅ Live & Responsive |
+| **3. Live Production DApp** | **[privacypreservingmidnightmoonlight.netlify.app](https://privacypreservingmidnightmoonlight.netlify.app/)** | ✅ Live & Responsive |
 | **4. Demo Video & Script** | [`DEMO_SCRIPT.md`](DEMO_SCRIPT.md) *(Full Step-by-Step Walkthrough)* | ✅ Detailed Walkthrough |
 | **5. Compact Smart Contract (v0.19)** | [`contract/governance.compact`](contract/governance.compact) & [`contract/src/index.compact`](contract/src/index.compact) | ✅ 4 Circuits Verified |
 | **6. Preprod Deployed Contract Address** | `0x3a9f1b2c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a` | ✅ Deployed on Preprod |
@@ -251,7 +251,7 @@ npm test
 npm run dev
 ```
 
-Visit `http://localhost:3000` to interact with the live StellarRise governance platform.
+Visit the live production application at **[https://privacypreservingmidnightmoonlight.netlify.app](https://privacypreservingmidnightmoonlight.netlify.app/)** or run locally at `http://localhost:3000` to interact with StellarRise.
 
 ---
 

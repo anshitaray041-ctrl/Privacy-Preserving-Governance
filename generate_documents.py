@@ -237,6 +237,7 @@ def build_pdf(filename="StellarRise_Idea_Description.pdf"):
     # Verification & Moonshots
     elements.append(Paragraph("5. Moonshots Progression & Test Suite", h1_style))
     elements.append(Paragraph(
+        "• <b>Live DApp URL:</b> <font color='#4338ca'><u>https://privacypreservingmidnightmoonlight.netlify.app/</u></font><br/>"
         "• <b>Level 1 to 6 (100% Complete):</b> Full compliance with Rise In Moonshot requirements.<br/>"
         "• <b>Automated Test Suite:</b> 12/12 passing tests across contract mechanics, privacy guarantees, and frontend consistency.<br/>"
         "• <b>Security Audit:</b> 100% Passed (0 Critical, 0 High, 0 Medium, 0 Low vulnerabilities).",
@@ -288,9 +289,9 @@ def build_presentation(filename="StellarRise_Pitch_Deck.pptx"):
     p2.space_before = Pt(12)
 
     p3 = tf.add_paragraph()
-    p3.text = "Production-Grade Zero-Knowledge DAO Voting with Publicly Verifiable Tallies | RiseIn Moonshots"
+    p3.text = "Live DApp: https://privacypreservingmidnightmoonlight.netlify.app | RiseIn Moonshots"
     p3.font.size = Pt(16)
-    p3.font.color.rgb = RGBColor(148, 163, 184)
+    p3.font.color.rgb = RGBColor(56, 189, 248)
     p3.space_before = Pt(18)
 
     # Slide 2: Problem & Solution

@@ -5,7 +5,7 @@ This script provides exact second-by-second timestamps and audio cues for record
 ---
 
 ### [00:00 - 00:10] Problem + StellarRise Introduction
-* **Visual:** Browser opens to StellarRise Landing Page (`http://localhost:3000`). Displaying glowing Midnight Dark Theme and headline: *"Privacy-Preserving Governance on Midnight"*.
+* **Visual:** Browser opens to StellarRise Landing Page (`https://privacypreservingmidnightmoonlight.netlify.app/`). Displaying glowing Midnight Dark Theme and headline: *"Privacy-Preserving Governance on Midnight"*.
 * **Voiceover:**
   > *"Conventional DAO voting exposes every ballot on-chain, leading to voter coercion, bribery, and herd mentality. Introducing **StellarRise** — the first privacy-preserving governance platform built natively on the Midnight Network that enables anonymous ballots with publicly verifiable tallies."*
 
