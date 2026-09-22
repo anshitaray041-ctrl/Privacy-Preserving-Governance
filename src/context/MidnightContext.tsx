@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { NetworkType, WalletState } from '../types';
+import { NetworkType, WalletState, WalletConnectionStatus } from '../types';
 import { MidnightClientService } from '../services/midnightClient';
 import { VoterWitness } from '../../contract/src/witness';
 
@@ -10,13 +10,16 @@ interface MidnightContextType {
   disconnectWallet: () => void;
   setNetwork: (network: NetworkType) => void;
   regenerateIdentity: () => void;
+  clearError: () => void;
 }
 
 const MidnightContext = createContext<MidnightContextType | undefined>(undefined);
 
 export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [voterWitness, setVoterWitness] = useState<VoterWitness>(() => new VoterWitness());
+  const [expectedNetwork, setExpectedNetwork] = useState<NetworkType>('preprod');
   const [wallet, setWallet] = useState<WalletState>({
+    status: 'disconnected',
     isConnected: false,
     isConnecting: false,
     walletName: 'Lace Midnight',
@@ -24,7 +27,9 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     shieldedAddress: '',
     dustBalance: '0.00 DUST',
     network: 'preprod',
+    expectedNetwork: 'preprod',
     voterSecret: '',
+    currentTx: { status: 'idle' },
   });
 
   useEffect(() => {
@@ -35,38 +40,58 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   }, [voterWitness]);
 
   const connectWallet = async () => {
-    setWallet(prev => ({ ...prev, isConnecting: true }));
+    setWallet(prev => ({ ...prev, isConnecting: true, status: 'connecting', error: undefined }));
     try {
-      const data = await MidnightClientService.connectLaceWallet(wallet.network);
+      const data = await MidnightClientService.connectLaceWallet(expectedNetwork);
+      
+      // Check for network mismatch
+      const isMismatch = data.actualNetwork !== expectedNetwork;
+      
       setWallet(prev => ({
         ...prev,
-        isConnected: true,
+        status: isMismatch ? 'wrong_network' : 'connected',
+        isConnected: !isMismatch,
         isConnecting: false,
         address: data.address,
         shieldedAddress: data.shieldedAddress,
         dustBalance: data.dustBalance,
         walletName: data.walletName,
+        network: data.actualNetwork,
+        expectedNetwork: expectedNetwork,
       }));
-    } catch (err) {
-      console.error('Wallet connection error:', err);
-      setWallet(prev => ({ ...prev, isConnecting: false }));
+    } catch (err: any) {
+      console.error('Lace wallet connection error:', err);
+      setWallet(prev => ({
+        ...prev,
+        status: 'disconnected',
+        isConnected: false,
+        isConnecting: false,
+        error: err.message || 'Failed to connect Lace wallet',
+      }));
     }
   };
 
   const disconnectWallet = () => {
     setWallet(prev => ({
       ...prev,
+      status: 'disconnected',
       isConnected: false,
+      isConnecting: false,
       address: '',
       shieldedAddress: '',
       dustBalance: '0.00 DUST',
+      error: undefined,
+      currentTx: { status: 'idle' },
     }));
   };
 
   const setNetwork = (network: NetworkType) => {
+    setExpectedNetwork(network);
     setWallet(prev => ({
       ...prev,
-      network,
+      expectedNetwork: network,
+      network: network,
+      status: prev.isConnected ? 'connected' : prev.status,
       address: prev.isConnected ? `mn_${network}_${prev.address.slice(10)}` : '',
     }));
   };
@@ -74,6 +99,10 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const regenerateIdentity = () => {
     const newWitness = new VoterWitness();
     setVoterWitness(newWitness);
+  };
+
+  const clearError = () => {
+    setWallet(prev => ({ ...prev, error: undefined }));
   };
 
   return (
@@ -85,6 +114,7 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         disconnectWallet,
         setNetwork,
         regenerateIdentity,
+        clearError,
       }}
     >
       {children}
