@@ -41,9 +41,10 @@
 | **10. Formal ZK Privacy Threat Model** | [`docs/PRIVACY_MODEL.md`](docs/PRIVACY_MODEL.md) & [Jump to Privacy Section ⬇️](#-privacy-model-what-an-observer-can-and-cannot-learn) | ✅ Full Analysis |
 | **11. Dual-State Architecture Spec** | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) & [Jump to Architecture Section ⬇️](#-public-state-vs-private-witness-architecture) | ✅ Public vs Private Tables |
 | **12. Security & Circuit Audit Report** | [`SECURITY_AUDIT_REPORT.md`](SECURITY_AUDIT_REPORT.md) | ✅ Passed 100% |
-| **13. Detailed Product Proposal** | [`docs/PRODUCT_PROPOSAL.md`](docs/PRODUCT_PROPOSAL.md) | ✅ Complete Specification |
-| **14. Multi-Wallet Bridge Integration** | Midnight Lace Wallet + Stellar Freighter Extension + Instant Demo Sandbox | ✅ Multi-Wallet Live |
-| **15. Observable Dual-State Inspector** | Interactive Real-Time Public Ledger vs. Private Witness Visualizer | ✅ In-DApp Inspector |
+| **13. Idea Specification PDF** | [`StellarRise_Idea_Description.pdf`](StellarRise_Idea_Description.pdf) | ✅ PDF Specification |
+| **14. Pitch Deck Presentation PPTX** | [`StellarRise_Pitch_Deck.pptx`](StellarRise_Pitch_Deck.pptx) | ✅ 16:9 Presentation |
+| **15. Multi-Wallet Bridge Integration** | Midnight Lace Wallet + Stellar Freighter Extension + Instant Demo Sandbox | ✅ Multi-Wallet Live |
+| **16. Observable Dual-State Inspector** | Interactive Real-Time Public Ledger vs. Private Witness Visualizer | ✅ In-DApp Inspector |
 
 ---
 
