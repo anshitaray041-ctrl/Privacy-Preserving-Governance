@@ -8,6 +8,7 @@
 [![Live Demo](https://img.shields.io/badge/🌐_Live%20DApp-Production%20Website-cyan?logo=netlify)](https://privacypreservingmidnightmoonlight.netlify.app/)
 [![Demo Video](https://img.shields.io/badge/🎬_Demo%20Video-YouTube%20Walkthrough-red?logo=youtube)](https://youtu.be/xvvtQR7w9QA)
 [![Security Audit](https://img.shields.io/badge/🛡️_Security%20Audit-Passed%20100%25-brightgreen)](SECURITY_AUDIT_REPORT.md)
+[![Product X Profile](https://img.shields.io/badge/𝕏_Product_Profile-@StellarRise__DAO-black?logo=x)](https://x.com/StellarRise_DAO)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
@@ -19,7 +20,7 @@
 | **Level 1** | **New Moon** | Toolchain Setup, Compact v0.19 Smart Contract, Unit Tests & Managed Simulator | **✅ 100% COMPLETE** |
 | **Level 2** | **Waxing Crescent** | Lace & Freighter Wallet Connection, Client-Side Circuit Execution & Observable Privacy | **✅ 100% COMPLETE** |
 | **Level 3** | **First Quarter** | Full dApp, CI/CD Pipeline, Formal Privacy Model & Verified Test Suite (12/12) | **✅ 100% COMPLETE** |
-| **Level 4** | **Waxing Gibbous** | Observable Dual-State Ledger Inspector & Shielded Commitment Verification | **✅ COMPLETE** |
+| **Level 4** | **Waxing Gibbous** | MVP Live on Preprod, Technical Docs, CI/CD Pipeline & Product X Profile | **✅ 100% COMPLETE** |
 | **Level 5** | **Full Moon** | Multi-Wallet Ecosystem Bridge (Midnight Lace + Stellar Freighter + Instant Demo) | **✅ COMPLETE** |
 | **Level 6** | **Supermoon** | Zero-Knowledge Security Audit, Formal Threat Model & Preprod Testnet Deploy Config | **✅ SUBMISSION READY** |
 
@@ -45,6 +46,7 @@
 | **14. Pitch Deck Presentation PPTX** | [`StellarRise_Pitch_Deck.pptx`](StellarRise_Pitch_Deck.pptx) | ✅ 16:9 Presentation |
 | **15. Multi-Wallet Bridge Integration** | Midnight Lace Wallet + Stellar Freighter Extension + Instant Demo Sandbox | ✅ Multi-Wallet Live |
 | **16. Observable Dual-State Inspector** | Interactive Real-Time Public Ledger vs. Private Witness Visualizer | ✅ In-DApp Inspector |
+| **17. Product X (Twitter) Profile** | [x.com/StellarRise_DAO](https://x.com/StellarRise_DAO) | ✅ Live & Public |
 
 ---
 

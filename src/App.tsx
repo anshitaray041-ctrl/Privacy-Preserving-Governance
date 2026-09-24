@@ -232,9 +232,18 @@ export const App: React.FC = () => {
           <div className="flex items-center gap-2">
             <span className="font-bold text-slate-300">StellarRise</span>
             <span>—</span>
-            <span>RiseIn Moonshots Submission (Level 1, 2 & 3)</span>
+            <span>Midnight Privacy-Preserving Governance (Rise In Moonshots)</span>
           </div>
           <div className="flex items-center gap-4 text-[11px]">
+            <a
+              href="https://x.com/StellarRise_DAO"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-400 hover:text-purple-300 font-semibold transition-colors"
+            >
+              𝕏 @StellarRise_DAO
+            </a>
+            <span>•</span>
             <span>Midnight Preprod</span>
             <span>•</span>
             <span>Compact 0.19</span>
