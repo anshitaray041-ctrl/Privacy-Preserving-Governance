@@ -1,6 +1,7 @@
 # StellarRise Feedback Documentation & User Survey Analysis
 
 * **Live Google Form Link**: [https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform)
+* **Live Google Responses Sheet**: [https://docs.google.com/spreadsheets/d/1IzwPbgBR2Q6kIIPeypcVyotBBAh0BVLwiFeAwW6xOVw/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1IzwPbgBR2Q6kIIPeypcVyotBBAh0BVLwiFeAwW6xOVw/edit?usp=sharing)
 * **50 Preprod Beta Testers**: [`docs/submission/preprod-users.md`](preprod-users.md)
 * **Main Feedback Report**: [`docs/FEEDBACK.md`](../FEEDBACK.md)
 

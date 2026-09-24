@@ -4,9 +4,10 @@
 
 ---
 
-## 🔗 Official User Feedback Form
+## 🔗 Official User Feedback Form & Live Responses
 
 * **Live Google Form Link**: [https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform](https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform)
+* **Live Google Responses Sheet**: [https://docs.google.com/spreadsheets/d/1IzwPbgBR2Q6kIIPeypcVyotBBAh0BVLwiFeAwW6xOVw/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1IzwPbgBR2Q6kIIPeypcVyotBBAh0BVLwiFeAwW6xOVw/edit?usp=sharing)
 * **Target Audience**: DAO Governance participants, Midnight developers, Web3 community members, and Zero-Knowledge researchers.
 * **Objective**: Measure wallet connection UX, clarity of zero-knowledge privacy mechanisms, in-browser PLONK proving performance, and identify priority features.
 
