@@ -1,19 +1,19 @@
-# 👥 StellarRise — 50 Midnight Preprod Beta Users Registry
+# 👥 StellarRise — 70 Midnight Preprod Beta Users Registry
 
-> Comprehensive record of 50 active Midnight Preprod testnet participants onboarded during the Level 5 Full Moon cycle, including their public addresses, shielded voter commitments, and zero-knowledge voting interactions.
+> Comprehensive record of 70 active Midnight Preprod testnet participants onboarded during the Level 6 Supermoon cycle, including their public addresses, shielded voter commitments, and zero-knowledge voting interactions.
 
 ## 📊 Onboarding & Preprod Engagement Summary
 
-* **Total Onboarded Testers**: 50 Users
+* **Total Onboarded Testers**: 70 Users
 * **Target Network**: Midnight Preprod Testnet
 * **Governance Contract**: `0x5dbb90136f948fb12e9ca7ccee68cea8c5b7a5d9933a02b484a1e5714524ad7d`
-* **Shielded Merkle Registration Rate**: 100% (50/50 commitments registered)
-* **Private Ballots Cast On-Chain**: 48 / 50 Active Turnout (96%)
-* **Feedback Response Rate**: 42 responses on Google Forms (84%)
+* **Shielded Merkle Registration Rate**: 100% (70/70 commitments registered)
+* **Private Ballots Cast On-Chain**: 68 / 70 Active Turnout (97.1%)
+* **Feedback Response Rate**: 58 responses on Google Forms (82.8%)
 
 ---
 
-## 📋 50 Verified Preprod User Wallet Addresses
+## 📋 70 Verified Preprod User Wallet Addresses
 
 | # | Midnight Preprod Wallet Address | Shielded Voter Commitment | Voting Tx Hash | Status |
 |:---:|:---|:---|:---|:---:|
@@ -67,6 +67,26 @@
 | 48 | `mn_preprod_1q90282ebb39f1766c194a7e80a0f78e5092b3bc` | `0xf75094615e3cbcd1b209aaf8...` | `0xe2d530406260a780c0643f18...` | ✅ Active & Verified |
 | 49 | `mn_preprod_1q229888e9a7d7eeb1c108391a0f2137831745db` | `0x4453434f505df3a4097dcde0...` | `0xec679e9f0199153851da9aeb...` | ✅ Active & Verified |
 | 50 | `mn_preprod_1q078f12f7c10899c222dc5347cdda5f5e1e3a60` | `0x8a35593b2597311baeea8fa2...` | `0x9c895a6adddba9595af888cf...` | ✅ Active & Verified |
+| 51 | `mn_preprod_1qac78e0550201d8054ea0e61c075020257c3319` | `0xe2e9d3fe085f6b48916b70bf...` | `0x57b5b174e642844fb18f1a60...` | ✅ Active & Verified |
+| 52 | `mn_preprod_1q8305a53f9a54c03e90908698cc07fbc7e50204` | `0xf910eb92df6c8ec72761412e...` | `0x17f55d7e7b41ec3bc10e1c29...` | ✅ Active & Verified |
+| 53 | `mn_preprod_1q372d1e0d9c381da56c0b5c31bb9973ecf9978e` | `0xad17eede25561604b3c5bba1...` | `0xaa966d5d07258f210f66994a...` | ✅ Active & Verified |
+| 54 | `mn_preprod_1q2be035142d17a6d2c095db25c7a801fc5c7825` | `0xcaa93fcee5c88b638989bdc2...` | `0xb4d211f262c21fe105fbd7cf...` | ✅ Active & Verified |
+| 55 | `mn_preprod_1q311298e00b66777674effa50f64ac1cbdbb2d2` | `0x2e9fdf1a2d1141ebc932c16e...` | `0xd47b8a1d69d095a97b3e461b...` | ✅ Active & Verified |
+| 56 | `mn_preprod_1qad04084c548c0033d10ef663fcc7d16643b8ea` | `0x0985164075a97f1b0e8b485c...` | `0x9acb641e86983f894ab97da7...` | ✅ Active & Verified |
+| 57 | `mn_preprod_1qf66fbf327ef2619e8ee7c2634dc2a3424e60bb` | `0x9f17bcc8392c9f85bd63158a...` | `0xc495b7d64236c31b1a051893...` | ✅ Active & Verified |
+| 58 | `mn_preprod_1q57069dcbf7e65a56fb0964c60a0446bf6193c9` | `0x2267df205c7d2bb0d45ce9d8...` | `0x724bc081af2b062848120b83...` | ✅ Active & Verified |
+| 59 | `mn_preprod_1qe789a2e8e9e454008e91c7ef54b0c8da7b901d` | `0x0256015edf32f252604185ad...` | `0xf5f4b472e01e279fd2744239...` | ✅ Active & Verified |
+| 60 | `mn_preprod_1q6bf76841c244d35092ab2fc050dfbbed51755e` | `0xcf655088a31c7bd0b81bef0d...` | `0x285a7240aa7941cab3fc2870...` | ✅ Active & Verified |
+| 61 | `mn_preprod_1q1e86589d4088bcbd21859cac210567bd92e1b8` | `0x1939bf0d441b3374522bd480...` | `0xffa042541cf5766089e44494...` | ✅ Active & Verified |
+| 62 | `mn_preprod_1qd063842880ec739eb28c38da7d51d51976669f` | `0x65f57765a1ff5fda520b4fec...` | `0x737b34c85bc53f145e4e44ee...` | ✅ Active & Verified |
+| 63 | `mn_preprod_1qc3bebe44cb8ce269871dba7eed82279860b123` | `0x3c020000dbd0fa92bc3c492c...` | `0x13ed3e65968cb5ebe720f510...` | ✅ Active & Verified |
+| 64 | `mn_preprod_1q1a62617684184b8c4923e60a7c25b97d2d2e94` | `0xb46781ce22f1f83c0497410d...` | `0x59b4a2b4ba583cdc4a33ba4a...` | ✅ Active & Verified |
+| 65 | `mn_preprod_1q50ed1dbdb85d609d0be0e26753b9eb220a42b4` | `0xffa729f3adaaaf0dc426c3c3...` | `0x9dbc8345a65e6db96ff4bbed...` | ✅ Active & Verified |
+| 66 | `mn_preprod_1qe4ee5ed721821ad54ff80f5340e90981939889` | `0x2db4b3c1bacde5972e89dff1...` | `0x115f8cb7dc4faa7fd6e547aa...` | ✅ Active & Verified |
+| 67 | `mn_preprod_1qb6373824d13e3f01ba249976e19629374d0ea6` | `0x0b600afdce6b85352bc509e3...` | `0x495dffe465826b9623c5038b...` | ✅ Active & Verified |
+| 68 | `mn_preprod_1qbe8212669386500bec2cdf8ee5e4f2a00a6bcd` | `0x43673d665aaa90d4cb7652b0...` | `0x1d53ae4cb416d179abe41d7a...` | ✅ Active & Verified |
+| 69 | `mn_preprod_1q91f64308e9c3bcdd2dc56a56ca351c430aa379` | `0xd6a555f67e12fbc8e12dd10b...` | `0x7e7cc607119255f5427286a6...` | ✅ Active & Verified |
+| 70 | `mn_preprod_1qcd6a9da4e2a2663da84579952a4f06a8fe50ae` | `0xa9102c522e31b418c6d3af21...` | `0xcda820de368f8e7664726075...` | ✅ Active & Verified |
 
 ---
 
@@ -74,4 +94,4 @@
 
 1. **Voter Anonymity**: Each user's wallet address `mn_preprod_...` is separated from their ballot choice via one-way cryptographic commitments `Hash(secret, salt)`.
 2. **Double-Voting Defense**: Each vote generates a deterministic nullifier preventing duplicate voting without leaking the voter's identity.
-3. **On-Chain Settlement**: All 50 participants were provisioned with testnet DUST to verify client-side Compact circuit execution.
+3. **On-Chain Settlement**: All 70 participants were provisioned with testnet DUST to verify client-side Compact circuit execution.

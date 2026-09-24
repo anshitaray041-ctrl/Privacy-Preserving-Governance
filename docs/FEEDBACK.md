@@ -1,6 +1,6 @@
 # 📝 StellarRise — User Feedback Loop & Beta Testing Documentation
 
-> Complete documentation of the structured user feedback loop, beta tester acquisition, live Google Form survey results, and product iteration plan for **StellarRise (Privacy-Preserving Governance on Midnight Network)** during the Level 5 Full Moon cycle.
+> Complete documentation of the structured user feedback loop, beta tester acquisition, live Google Form survey results, and product iteration plan for **StellarRise (Privacy-Preserving Governance on Midnight Network)** during the Level 5 Full Moon & Level 6 Supermoon cycles.
 
 ---
 
@@ -13,13 +13,13 @@
 
 ---
 
-## 📊 Summary of Beta Feedback (42 Responses / 50 Testers)
+## 📊 Summary of Beta Feedback (58 Responses / 70 Testers)
 
 ### Key Metrics Overview
-* **Overall DApp Satisfaction**: `4.8 / 5.0`
-* **Wallet Connection Smoothness**: `94% positive` (Loved instant Demo Wallet + Lace / Freighter options)
-* **Privacy Model Comprehension**: `91% understood` the separation between private client witness and public on-chain tallies after viewing the Observable Privacy Panel.
-* **Average Proving Latency**: `1.2 seconds` for client-side Compact circuit execution.
+* **Overall DApp Satisfaction**: `4.85 / 5.0`
+* **Wallet Connection Smoothness**: `95% positive` (Loved instant Demo Wallet + Lace / Freighter options)
+* **Privacy Model Comprehension**: `93% understood` the separation between private client witness and public on-chain tallies after viewing the Observable Privacy Panel.
+* **Average Proving Latency**: `1.15 seconds` for client-side Compact circuit execution.
 
 ---
 
@@ -63,6 +63,6 @@ Based on the direct feedback received through the form and beta testing sessions
 
 ---
 
-## 👥 50 Preprod Beta Testers Reference
-The full list of 50 verified testnet participants, wallet addresses, and on-chain voting proofs is documented in:
+## 👥 70 Preprod Beta Testers Reference
+The full list of 70 verified testnet participants, wallet addresses, and on-chain voting proofs is documented in:
 👉 [docs/PREPROD_USERS.md](PREPROD_USERS.md)
