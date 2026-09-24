@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { NetworkType, WalletState, WalletConnectionStatus, WalletType } from '../types';
 import { MidnightClientService } from '../services/midnightClient';
 import { VoterWitness } from '../../contract/src/witness';
+import { setNetworkId } from '@midnight-ntwrk/midnight-js-network-id';
 
 interface MidnightContextType {
   wallet: WalletState;
@@ -88,6 +89,11 @@ export const MidnightProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const setNetwork = (network: NetworkType) => {
+    try {
+      setNetworkId(network === 'preprod' ? 'preprod' : network === 'preview' ? 'preview' : 'undeployed');
+    } catch {
+      // ignore in test / browser mock env
+    }
     setExpectedNetwork(network);
     setWallet(prev => ({
       ...prev,

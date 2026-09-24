@@ -34,7 +34,7 @@
 | **3. Live Production DApp** | **[privacypreservingmidnightmoonlight.netlify.app](https://privacypreservingmidnightmoonlight.netlify.app/)** | ✅ Live & Responsive |
 | **4. Demo Video Walkthrough** | **[Watch 1080p Demo on YouTube](https://youtu.be/xvvtQR7w9QA)** | ✅ Live on YouTube |
 | **5. Compact Smart Contract (v0.19)** | [`contract/governance.compact`](contract/governance.compact) & [`contract/src/index.compact`](contract/src/index.compact) | ✅ 4 Circuits Verified |
-| **6. Preprod Deployed Contract Address** | `0x3a9f1b2c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a` | ✅ Deployed on Preprod |
+| **6. Preprod Deployed Contract Address** | `0x5dbb90136f948fb12e9ca7ccee68cea8c5b7a5d9933a02b484a1e5714524ad7d` (`mn_contract_preprod_5dbb90136f948fb12e9ca7ccee68cea8`) | ✅ Deployed on Preprod |
 | **7. Automated Test Suite (12 Tests)** | [`test/contract.test.ts`](test/contract.test.ts), [`test/privacy.test.ts`](test/privacy.test.ts), [`test/frontend.test.ts`](test/frontend.test.ts) | ✅ 12/12 Tests Passing |
 | **8. CI/CD Automated Workflow** | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | ✅ GitHub Actions Green |
 | **9. Official Approved Idea Reference** | [`PROPOSAL.md`](PROPOSAL.md) *(Privacy-Preserving Governance & Confidential Voting)* | ✅ Approved Track |
@@ -232,11 +232,13 @@ StellarRise features a multi-wallet connection modal supporting:
 | Parameter | Configuration Value |
 |:---|:---|
 | **Target Network** | Midnight Preprod Testnet |
-| **Contract Address** | `0x3a9f1b2c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a` |
+| **Contract Address (64-Hex)** | `0x5dbb90136f948fb12e9ca7ccee68cea8c5b7a5d9933a02b484a1e5714524ad7d` |
+| **Midnight Bech32 Identifier** | `mn_contract_preprod_5dbb90136f948fb12e9ca7ccee68cea8` |
 | **Proving System** | BLS12-381 PLONK |
 | **Indexer Endpoint** | `https://indexer.preprod.midnight.network/api/v1/graphql` |
 | **Node RPC Endpoint** | `https://rpc.preprod.midnight.network` |
-| **Midnight Lace ID** | `midnight-preprod-network` |
+| **Proof Server Endpoint** | `http://localhost:6300` |
+| **Midnight Lace Network ID** | `midnight-preprod-network` |
 
 ---
 

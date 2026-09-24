@@ -9,8 +9,11 @@ export const DeploymentInfoSection: React.FC = () => {
 
   const isPreprod = wallet.network === 'preprod';
   const activeConfig = isPreprod ? PREPROD_CONFIG : PREVIEW_CONFIG;
+  const contractHexAddress = isPreprod
+    ? '0x5dbb90136f948fb12e9ca7ccee68cea8c5b7a5d9933a02b484a1e5714524ad7d'
+    : '0x79c0a98df2410a8c88fd7392b490f8423f0a1209b18567de9410ca385961028e';
   const contractAddress = isPreprod
-    ? 'mn_contract_preprod_8b5cf6e9238410293a8d81029f44'
+    ? 'mn_contract_preprod_5dbb90136f948fb12e9ca7ccee68cea8'
     : 'mn_contract_preview_79c0a98df2410a8c88fd7392b490f84';
 
   const handleCopy = (text: string, field: string) => {
@@ -51,7 +54,7 @@ export const DeploymentInfoSection: React.FC = () => {
                 Deployed Contract Address (Preprod)
               </span>
               <button
-                onClick={() => handleCopy(contractAddress, 'contract')}
+                onClick={() => handleCopy(contractHexAddress, 'contract')}
                 className="text-xs text-purple-400 hover:text-purple-300 flex items-center gap-1 font-semibold"
               >
                 {copiedField === 'contract' ? <Check size={12} className="text-emerald-400" /> : <Copy size={12} />}
@@ -59,7 +62,10 @@ export const DeploymentInfoSection: React.FC = () => {
               </button>
             </div>
             <div className="font-mono text-xs text-purple-300 break-all bg-[#070913] p-2 rounded-lg border border-white/5">
-              {contractAddress}
+              {contractHexAddress}
+            </div>
+            <div className="text-[11px] font-mono text-slate-500">
+              Bech32 Identifier: <span className="text-slate-400">{contractAddress}</span>
             </div>
           </div>
 

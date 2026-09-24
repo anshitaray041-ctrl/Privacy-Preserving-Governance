@@ -104,10 +104,10 @@ export const ProposalDetail: React.FC<ProposalDetailProps> = ({
 
                 <div className="p-2.5 rounded-lg bg-black/40 border border-white/5 flex items-center justify-between">
                   <span className="text-slate-400">Midnight Preprod Contract:</span>
-                  <span className="text-emerald-300 flex items-center gap-1.5">
-                    mn_contract_preprod_8b5cf6e92...
+                  <span className="text-emerald-300 flex items-center gap-1.5 font-mono text-[11px]">
+                    0x5dbb9013...ad7d
                     <button 
-                      onClick={() => copyToClipboard('mn_contract_preprod_8b5cf6e9238410293')}
+                      onClick={() => copyToClipboard('0x5dbb90136f948fb12e9ca7ccee68cea8c5b7a5d9933a02b484a1e5714524ad7d')}
                       className="hover:text-white" title="Copy Address"
                     >
                       <Copy size={12} />
