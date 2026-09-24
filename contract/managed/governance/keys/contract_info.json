@@ -3,7 +3,7 @@
   "language": "Compact",
   "compilerVersion": "0.19.0",
   "sourceHash": "2edced2adaccf89f9e507a65e554a76a1611044c7f6b09c8687b12a3a71522af",
-  "compiledAt": "2026-09-24T10:03:20.456Z",
+  "compiledAt": "2026-09-24T11:11:14.629Z",
   "target": "midnight-network-preprod",
   "circuits": [
     {
