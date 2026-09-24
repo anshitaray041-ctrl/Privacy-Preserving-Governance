@@ -281,6 +281,18 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, openCre
               )}
             </div>
 
+            {/* Feedback Button */}
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 text-xs font-semibold rounded-lg bg-purple-950/40 border border-purple-500/30 text-purple-300 hover:bg-purple-900/40 hover:text-white transition-all shadow-sm"
+              title="Give Beta Feedback"
+            >
+              <span>📝 Feedback</span>
+              <ExternalLink size={12} className="opacity-70" />
+            </a>
+
             {/* Create Proposal Button */}
             <button
               onClick={openCreateModal}

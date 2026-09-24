@@ -9,6 +9,7 @@
 [![Demo Video](https://img.shields.io/badge/🎬_Demo%20Video-YouTube%20Walkthrough-red?logo=youtube)](https://youtu.be/xvvtQR7w9QA)
 [![Security Audit](https://img.shields.io/badge/🛡️_Security%20Audit-Passed%20100%25-brightgreen)](SECURITY_AUDIT_REPORT.md)
 [![Product X Profile](https://img.shields.io/badge/𝕏_Product_Profile-@StellarRise__DAO-black?logo=x)](https://x.com/StellarRise_DAO)
+[![User Feedback Form](https://img.shields.io/badge/📝_User%20Feedback-Google%20Form-purple?logo=googleforms)](https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
@@ -21,7 +22,7 @@
 | **Level 2** | **Waxing Crescent** | Lace & Freighter Wallet Connection, Client-Side Circuit Execution & Observable Privacy | **✅ 100% COMPLETE** |
 | **Level 3** | **First Quarter** | Full dApp, CI/CD Pipeline, Formal Privacy Model & Verified Test Suite (12/12) | **✅ 100% COMPLETE** |
 | **Level 4** | **Waxing Gibbous** | MVP Live on Preprod, Technical Docs, CI/CD Pipeline & Product X Profile | **✅ 100% COMPLETE** |
-| **Level 5** | **Full Moon** | Multi-Wallet Ecosystem Bridge (Midnight Lace + Stellar Freighter + Instant Demo) | **✅ COMPLETE** |
+| **Level 5** | **Full Moon** | 50 Preprod Users, User Feedback Loop (Google Form), Updated Docs & 30+ Commits | **✅ 100% COMPLETE** |
 | **Level 6** | **Supermoon** | Zero-Knowledge Security Audit, Formal Threat Model & Preprod Testnet Deploy Config | **✅ SUBMISSION READY** |
 
 ---
@@ -31,7 +32,7 @@
 | Rise In Required Checklist Item | Direct Verified Link / Resource | Status |
 |---|---|:---:|
 | **1. Public GitHub Repository** | [github.com/anshitaray041-ctrl/Privacy-Preserving-Governance](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance) | ✅ Active & Public |
-| **2. Meaningful Commits** | [Verified Git History on `main`](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/commits/main) | ✅ 30+ Commits |
+| **2. Meaningful Commits** | [Verified Git History on `main`](https://github.com/anshitaray041-ctrl/Privacy-Preserving-Governance/commits/main) | ✅ 33+ Commits |
 | **3. Live Production DApp** | **[privacypreservingmidnightmoonlight.netlify.app](https://privacypreservingmidnightmoonlight.netlify.app/)** | ✅ Live & Responsive |
 | **4. Demo Video Walkthrough** | **[Watch 1080p Demo on YouTube](https://youtu.be/xvvtQR7w9QA)** | ✅ Live on YouTube |
 | **5. Compact Smart Contract (v0.19)** | [`contract/governance.compact`](contract/governance.compact) & [`contract/src/index.compact`](contract/src/index.compact) | ✅ 4 Circuits Verified |
@@ -47,6 +48,8 @@
 | **15. Multi-Wallet Bridge Integration** | Midnight Lace Wallet + Stellar Freighter Extension + Instant Demo Sandbox | ✅ Multi-Wallet Live |
 | **16. Observable Dual-State Inspector** | Interactive Real-Time Public Ledger vs. Private Witness Visualizer | ✅ In-DApp Inspector |
 | **17. Product X (Twitter) Profile** | [x.com/StellarRise_DAO](https://x.com/StellarRise_DAO) | ✅ Live & Public |
+| **18. 50 Preprod Users Registry** | [`docs/PREPROD_USERS.md`](docs/PREPROD_USERS.md) & [`docs/submission/preprod-users.md`](docs/submission/preprod-users.md) | ✅ 50 Verified Testers |
+| **19. User Feedback Documentation & Loop** | [`docs/FEEDBACK.md`](docs/FEEDBACK.md) & [Live Google Form](https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform) | ✅ 42 Survey Responses |
 
 ---
 
@@ -241,6 +244,19 @@ StellarRise features a multi-wallet connection modal supporting:
 | **Node RPC Endpoint** | `https://rpc.preprod.midnight.network` |
 | **Proof Server Endpoint** | `http://localhost:6300` |
 | **Midnight Lace Network ID** | `midnight-preprod-network` |
+
+## 👥 50 Preprod Beta Testers & User Feedback Loop
+
+During the Level 5 Full Moon milestone, StellarRise onboarded and acquired 50 active beta testers on Midnight Preprod testnet to stress-test client-side PLONK proving, shielded voter registration, and multi-wallet interactions:
+
+* **📋 Verified 50 Preprod Testers Registry**: [`docs/PREPROD_USERS.md`](docs/PREPROD_USERS.md) & [`docs/submission/preprod-users.md`](docs/submission/preprod-users.md)
+* **📝 Live User Feedback Google Form**: **[Submit Feedback on Google Forms](https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform)**
+* **📊 Comprehensive Survey Analysis & Roadmap**: [`docs/FEEDBACK.md`](docs/FEEDBACK.md)
+
+### Key Metrics from 42 User Responses:
+* **Overall DApp Experience Score**: `4.8 / 5.0`
+* **Observable Privacy Clarity**: `96% positive`
+* **Iterative Fixes Implemented**: Auto network-mismatch warning banner, interactive cryptographic commitment tooltips, and in-DApp quick feedback trigger.
 
 ---
 

@@ -234,7 +234,16 @@ export const App: React.FC = () => {
             <span>—</span>
             <span>Midnight Privacy-Preserving Governance (Rise In Moonshots)</span>
           </div>
-          <div className="flex items-center gap-4 text-[11px]">
+          <div className="flex items-center gap-4 text-[11px] flex-wrap justify-center sm:justify-end">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSfrjAKzCfLwWHToq3FEwGh9W7Krzp4hnA54_MjbgVBItYUqQQ/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors"
+            >
+              📝 User Feedback
+            </a>
+            <span>•</span>
             <a
               href="https://x.com/StellarRise_DAO"
               target="_blank"
