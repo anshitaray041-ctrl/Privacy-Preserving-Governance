@@ -3,6 +3,6 @@
   "type": "prover_key",
   "curve": "BLS12-381",
   "constraints": 4380,
-  "checksum": "0673f9796cb49fbb2d3c126d58428c6fb82e4975fb649cc4e36b5faf48033325",
-  "generatedAt": "2026-09-22T17:46:39.771Z"
+  "checksum": "ae6c23e12ce227a8541504f54435b3a5e60465df980941055d8db8e7350596cf",
+  "generatedAt": "2026-09-24T10:03:20.463Z"
 }
