@@ -55,5 +55,5 @@ StellarRise is built natively on the **Midnight Network** utilizing:
 * **Language:** Compact 0.19.0 + TypeScript 5.7
 * **Proving System:** BLS12-381 ZK-SNARKs
 * **Hashing Primitive:** SHA-256 / Poseidon Nullifiers
-* **Frontend Framework:** React 18 + Vite 6 + Tailwind-free Vanilla Web3 Design System
-* **Client Connector:** `@midnight-ntwrk/dapp-connector-api` + Lace Midnight Extension
+* **Client Connector:** `@midnight-ntwrk/dapp-connector-api` + `@midnight-ntwrk/midnight-js-network-id` + Lace Midnight Extension
+* **Deployed Preprod Contract:** `0x5dbb90136f948fb12e9ca7ccee68cea8c5b7a5d9933a02b484a1e5714524ad7d` (`mn_contract_preprod_5dbb90136f948fb12e9ca7ccee68cea8`)

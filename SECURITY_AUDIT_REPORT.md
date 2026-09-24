@@ -2,6 +2,7 @@
 
 **Target:** StellarRise Midnight Compact Smart Contract (`contract/src/index.compact` / `contract/governance.compact`)  
 **Network:** Midnight Preprod Network (Testnet)  
+**Contract Address:** `0x5dbb90136f948fb12e9ca7ccee68cea8c5b7a5d9933a02b484a1e5714524ad7d` (`mn_contract_preprod_5dbb90136f948fb12e9ca7ccee68cea8`)  
 **Compiler:** Compact v0.19.0 (BLS12-381 PLONK Proving System)  
 **Audit Scope:** Mathematical Invariants, Zero-Knowledge Privacy Leakage, Double-Vote Prevention, Merkle Membership Verification, and Public Ledger Unlinkability.  
 **Result:** **100% Passed (0 Critical, 0 High, 0 Medium, 0 Low Vulnerabilities)**
